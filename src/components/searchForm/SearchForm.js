@@ -1,9 +1,9 @@
 import { useState, useContext } from 'react';
-import { MyContext } from '../../context/context';
+import { MapContext } from '../../context/context';
 
 export function SearchForm() {
   const { adress1, setAdress1, adress2, setAdress2, handleSubmit } =
-    useContext(MyContext);
+    useContext(MapContext);
 
   return (
     <form onSubmit={handleSubmit}>
