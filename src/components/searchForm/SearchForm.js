@@ -46,7 +46,7 @@ export function SearchForm() {
             value={adress1.city}
           />
         </label>
-        <label>
+        {/* <label>
           Country:
           <input
             type='text'
@@ -59,7 +59,7 @@ export function SearchForm() {
             }
             value={adress1.country}
           />
-        </label>
+        </label> */}
       </div>
 
       <label>
@@ -96,7 +96,7 @@ export function SearchForm() {
             value={adress2.city}
           />
         </label>
-        <label>
+        {/* <label>
           Country:
           <input
             type='text'
@@ -109,7 +109,7 @@ export function SearchForm() {
             }
             value={adress2.country}
           />
-        </label>
+        </label> */}
       </label>
       <input type='submit' value='Find' />
     </form>
