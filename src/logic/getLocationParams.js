@@ -2,10 +2,8 @@ export async function getLocationParams(adress) {
   //   const searchAdress = 'Invalidenstr' + '117' + 'Berlin';
 
   const searchAdress =
-    `${adress.streetName}` +
-    `${adress.number}` +
-    `${adress.city}` +
-    `${adress.country}`;
+    `${adress.streetName}` + `${adress.number}` + `${adress.city}`;
+  // `${adress.country}`;
 
   const response = await fetch(
     `https://geocode.search.hereapi.com/v1/geocode?q=${searchAdress}&apiKey=${process.env.REACT_APP_HERE_API_KEY}`
