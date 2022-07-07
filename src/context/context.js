@@ -1,2 +1,2 @@
 import { createContext } from 'react';
-export const MyContext = createContext('Default Value');
+export const MapContext = createContext('Default Value');
