@@ -1,4 +1,4 @@
-export async function getLocationParams(adress) {
+export async function getLocationParams(adress: string) {
   const response = await fetch(
     `https://geocode.search.hereapi.com/v1/geocode?q=${adress}&apiKey=${process.env.REACT_APP_HERE_API_KEY}`
   );

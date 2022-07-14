@@ -5,23 +5,12 @@ import 'leaflet-routing-machine/dist/leaflet-routing-machine.css';
 import 'leaflet-routing-machine';
 import { useMap } from 'react-leaflet';
 
-// L.Marker.prototype.options.icon = L.icon({
-//   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-// });
-
 export function Routing() {
   const map = useMap();
 
-  const {
-    location1LatLng,
-    location2LatLng,
-    currentAdresses,
-    setCurrentAdresses,
-    travelData,
-    setTravelData,
-  } = useContext(MapContext);
+  const { currentAdresses, travelData, setTravelData } = useContext(MapContext);
 
-  async function getDistance(data) {
+  function getDistance(data: { totalDistance: number; totalTime: number }) {
     // console.log(data);
     setTravelData({
       ...travelData,
@@ -30,7 +19,7 @@ export function Routing() {
     });
   }
 
-  useEffect(() => {
+  useEffect((): any => {
     if (!map) return;
 
     const routingControl = L.Routing.control({
@@ -48,7 +37,7 @@ export function Routing() {
       // routeWhileDragging: true,
       showAlternatives: true,
     })
-      .on('routeselected', function (e) {
+      .on('routeselected', function (e: any) {
         const route = e.route;
         // console.log(route.summary);
         getDistance(route.summary);
@@ -58,5 +47,5 @@ export function Routing() {
     return () => map.removeControl(routingControl);
   }, [map, currentAdresses]);
 
-  // return null;
+  return null;
 }
