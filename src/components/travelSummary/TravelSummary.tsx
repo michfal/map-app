@@ -1,37 +1,38 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { MapContext } from '../../context/context';
 
-//cena paliwa? podaje user
-//śrSpalanie na 100km? podaje user
-//dystans (pobiera z api)
+export const TravelSummary: React.FC = () => {
+  const { travelData } = useContext(MapContext);
 
-//ileSpali = (dystans * śrSpalanie) / 100
-//koszt = cenaPaliwa * ileSpali
+  interface IFormInfo {
+    fuelPrice: number;
+    avgFuelConsumption: number;
+  }
 
-// const distance = 400;
+  const [formInfo, setFormInfo] = useState<IFormInfo>({
+    fuelPrice: 0,
+    avgFuelConsumption: 0,
+  });
 
-//Display:
-//>distance
-//>cost
-//>fuel consumption
-//travel time
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    setFormInfo({
+      ...formInfo,
+      [target.name]: target.value,
+    });
+  };
 
-function handleInput() {}
+  const totalFuelConsumption =
+    (travelData.distance * formInfo.avgFuelConsumption) / 100;
+  const travelCost = Math.round(formInfo.fuelPrice * totalFuelConsumption);
 
-export function TravelSummary({ travelData }) {
-  const [fuelPrice, setFuelPrice] = useState();
-  const [avgFuelConsumption, setAvgFuelConsumption] = useState();
-  console.log(fuelPrice);
-  console.log(avgFuelConsumption);
-
-  const totalFuelConsumption = (travelData.distance * avgFuelConsumption) / 100;
-  const travelCost = Math.round(fuelPrice * totalFuelConsumption);
   return (
     <div>
       <form>
         <label>
           Cena paliwa za litr
           <input
-            onChange={(e) => setFuelPrice(e.target.value)}
+            onChange={handleInput}
             type='text'
             name='fuelPrice'
             placeholder='cena paliwa'
@@ -40,7 +41,7 @@ export function TravelSummary({ travelData }) {
         <label>
           Średnie spalanie litr\100km
           <input
-            onChange={(e) => setAvgFuelConsumption(e.target.value)}
+            onChange={handleInput}
             type='text'
             name='avgFuelConsumption'
             placeholder='średnie spalanie'
@@ -49,7 +50,7 @@ export function TravelSummary({ travelData }) {
         {/* <input type='text' name='driverHourlyRate' placeholder='Stawka Godzinowa Kierowcy' /> */}
         {/* <input type='submit' /> */}
       </form>
-      {fuelPrice && avgFuelConsumption ? (
+      {formInfo.fuelPrice && formInfo.avgFuelConsumption ? (
         <div>
           <h2>Dystans: {travelData.distance}km</h2>
           <h2>Czas: {travelData.time}godz</h2>
@@ -61,4 +62,4 @@ export function TravelSummary({ travelData }) {
       )}
     </div>
   );
-}
+};
