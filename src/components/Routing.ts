@@ -35,7 +35,7 @@ export function Routing() {
       ],
       addWaypoints: false,
       // routeWhileDragging: true,
-      showAlternatives: true,
+      // showAlternatives: true,
     })
       .on('routeselected', function (e: any) {
         const route = e.route;

@@ -2,7 +2,6 @@
   "name": "map-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://licenseapi.herokuapp.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -21,7 +20,6 @@
     "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -49,5 +47,4 @@
   "devDependencies": {
     "@types/leaflet-routing-machine": "^3.2.4"
   }
-  
 }

@@ -1,17 +1,14 @@
 interface IObject {
-  [key: string]: string | number;
+  adress1: string;
+  adress1LatLng: { lat: number; lng: number };
+  adress2: string;
+  adress2LatLng: { lat: number; lng: number };
 }
 
 export const objectCompare = (object1: IObject, object2: IObject) => {
-  const keys1 = Object.keys(object1);
-  const keys2 = Object.keys(object2);
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-  for (let key of keys1) {
-    if (object1[key] !== object2[key]) {
-      return false;
-    }
-  }
-  return true;
+  console.log(object1);
+  console.log(object2);
+  const shallowComparison = JSON.stringify(object1) === JSON.stringify(object2);
+  console.log(shallowComparison);
+  return shallowComparison;
 };
