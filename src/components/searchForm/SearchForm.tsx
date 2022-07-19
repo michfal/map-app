@@ -1,19 +1,19 @@
 import { useContext, useState, useEffect } from 'react';
 import { MapContext } from '../../context/context';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export const SearchForm: React.FC = () => {
+export const SearchForm: React.FC<any> = (props) => {
   const { handleLocationSearch, currentAdresses, setCurrentAdresses } =
     useContext(MapContext);
 
-  const [inputAdress, setInputAdress] = useState({
-    adress1: '15 Podborska Warszawa',
+  const navigate = useNavigate();
 
-    adress2: '11 Lipińskiego Sanok',
-  });
-
-  // useEffect(() => {
-  //   console.log(inputAdress);
-  // }, [inputAdress]);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // console.log(props.intro);
+    handleLocationSearch();
+    props.intro && navigate('/map');
+  };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     setCurrentAdresses({
@@ -23,18 +23,8 @@ export const SearchForm: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setCurrentAdresses({
-      ...currentAdresses,
-      adress1: inputAdress.adress1,
-      adress2: inputAdress.adress2,
-    });
-    // await handleLocationSearch();
-  };
-
   return (
-    <form onSubmit={handleLocationSearch}>
+    <form onSubmit={handleSubmit}>
       <label>
         Adress1:
         <input type='text' name='adress1' onChange={handleInput} />
@@ -46,6 +36,7 @@ export const SearchForm: React.FC = () => {
           <input type='text' name='adress2' onChange={handleInput} />
         </label>
       </label>
+
       <input type='submit' value='Znajdź' />
     </form>
   );
