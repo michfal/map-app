@@ -1,19 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { MapContext } from '../../context/context';
-// import { getLocationParams } from './logic/getLocationParams';
 
 import { Routing } from '../Routing';
-
-// import { SearchForm } from './components/searchForm/SearchForm';
-// import { TravelSummary } from './components/travelSummary/TravelSummary';
 
 export const Map: React.FC = () => {
   const { currentAdresses } = useContext(MapContext);
 
-  // console.log(
-  //   (currentAdresses.adress1.length && currentAdresses.adress2.length) > 0
-  // );
   const routingDataExist =
     (currentAdresses.adress1.length && currentAdresses.adress2.length) > 0;
 
