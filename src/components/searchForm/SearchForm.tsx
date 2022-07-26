@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect } from 'react';
 import { MapContext } from '../../context/context';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { capitalize } from '../../logic/capitalize';
 
 export const SearchForm: React.FC<any> = (props) => {
   const { handleLocationSearch, currentAdresses, setCurrentAdresses } =
@@ -15,11 +16,12 @@ export const SearchForm: React.FC<any> = (props) => {
     props.intro && navigate('/map');
   };
 
-  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.FormEvent<HTMLInputElement | string>) => {
+    const target = capitalize((e.target as HTMLInputElement).value);
+
     setCurrentAdresses({
       ...currentAdresses,
-      [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
-        .value,
+      [(e.target as HTMLInputElement).name]: target,
     });
   };
 
