@@ -3,7 +3,7 @@ import { MapContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '../../logic/capitalize';
 
-export const SearchForm: React.FC<any> = (props) => {
+export const SearchForm: React.FC<IProps> = ({ intro }) => {
   const { handleLocationSearch, currentAdresses, setCurrentAdresses } =
     useContext(MapContext);
 
@@ -11,9 +11,9 @@ export const SearchForm: React.FC<any> = (props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log(props.intro);
+    console.log(typeof intro);
     handleLocationSearch();
-    props.intro && navigate('/map');
+    intro && navigate('/map');
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement | string>) => {

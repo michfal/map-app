@@ -7,4 +7,8 @@ declare global {
     adress2: string;
     adress2LatLng: { lat: number; lng: number };
   }
+
+  interface IProps {
+    intro?: string;
+  }
 }

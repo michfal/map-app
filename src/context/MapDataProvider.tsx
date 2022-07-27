@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState, ReactNode, useEffect } from 'react';
 import { MapContext } from './context';
 import { objectCompare } from '../logic/objectCompare';
 import { getLocationsData } from '../logic/getLocationParams';
@@ -28,21 +28,31 @@ export const MapDataProvider = ({ children }: { children: ReactNode }) => {
 
   const [searchHistory, setSearchHistory] = useState<Array<IAdressFormat>>([]);
 
+  // useEffect(() => {
+  //   console.log(searchHistory);
+  // }, [searchHistory]);
+
   const handleSearchHistory = async (adress: IAdressFormat) => {
     if (typeof searchHistory[0] == 'object') {
       if (!objectCompare(searchHistory[0], adress)) {
-        setSearchHistory((searchHistory: any) => [adress, ...searchHistory]);
+        setSearchHistory((searchHistory: Array<IAdressFormat>) => [
+          adress,
+          ...searchHistory,
+        ]);
       }
     }
     !searchHistory[0] &&
-      setSearchHistory((searchHistory: any) => [adress, ...searchHistory]);
+      setSearchHistory((searchHistory: Array<IAdressFormat>) => [
+        adress,
+        ...searchHistory,
+      ]);
   };
 
   //handle location search
-  const handleLocationSearch = async () => {
+  const handleLocationSearch = () => {
     getLocationsData(currentAdresses.adress1, currentAdresses.adress2).then(
       (data: any) => {
-        // console.log(data);
+        console.log(data);
         setCurrentAdresses(data);
         handleSearchHistory(data);
       }
