@@ -5,6 +5,6 @@ export const objectCompare = (
   // console.log(object1);
   // console.log(object2);
   const shallowComparison = JSON.stringify(object1) === JSON.stringify(object2);
-  console.log(shallowComparison);
+  // console.log(shallowComparison);
   return shallowComparison;
 };

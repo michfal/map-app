@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { MapContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '../../logic/capitalize';
+import { searchFormCheck } from '../../logic/formCheck';
 
 export const SearchForm: React.FC<IProps> = ({ intro }) => {
   const { handleLocationSearch, currentAdresses, setCurrentAdresses } =
@@ -11,9 +12,13 @@ export const SearchForm: React.FC<IProps> = ({ intro }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(typeof intro);
-    handleLocationSearch();
-    intro && navigate('/map');
+    // console.log(typeof intro);
+    const allFormCheckPass = searchFormCheck(currentAdresses).allTestsPass();
+    console.log(allFormCheckPass);
+    if (searchFormCheck(currentAdresses).allTestsPass()) {
+      handleLocationSearch();
+      intro && navigate('/map');
+    }
   };
 
   const handleInput = (e: React.FormEvent<HTMLInputElement | string>) => {
