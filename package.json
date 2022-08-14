@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
-    "@types/leaflet-routing-machine": "^3.2.4"
+    "@types/leaflet-routing-machine": "^3.2.4",
+    "dts-css-modules-loader": "^2.0.0"
   }
 }

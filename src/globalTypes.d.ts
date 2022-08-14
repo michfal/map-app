@@ -1,5 +1,7 @@
 export {};
 
+declare module '*.scss';
+
 declare global {
   interface IAdressFormat {
     adress1: string;
@@ -11,4 +13,5 @@ declare global {
   interface IProps {
     intro?: string;
   }
+  module '*.scss';
 }
