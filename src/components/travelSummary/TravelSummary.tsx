@@ -1,5 +1,12 @@
 import { useState, useContext, useEffect } from 'react';
 import { MapContext } from '../../context/context';
+import {
+  GasParams,
+  GasParamsContainer,
+  TravelInfo,
+} from './travelSummary.style';
+import { Header } from '../header/header.style';
+import { FormInput } from '../searchForm/formStyles.style';
 
 export const TravelSummary: React.FC = () => {
   const { travelData } = useContext(MapContext);
@@ -28,37 +35,37 @@ export const TravelSummary: React.FC = () => {
 
   return (
     <div>
-      <form>
-        <label>
+      <GasParamsContainer>
+        <GasParams>
           Cena paliwa za litr
-          <input
+          <FormInput
             onChange={handleInput}
             type='text'
             name='fuelPrice'
             placeholder='cena paliwa'
           />
-        </label>
-        <label>
+        </GasParams>
+        <GasParams>
           Średnie spalanie litr\100km
-          <input
+          <FormInput
             onChange={handleInput}
             type='text'
             name='avgFuelConsumption'
             placeholder='średnie spalanie'
           />
-        </label>
+        </GasParams>
         {/* <input type='text' name='driverHourlyRate' placeholder='Stawka Godzinowa Kierowcy' /> */}
         {/* <input type='submit' /> */}
-      </form>
+      </GasParamsContainer>
       {formInfo.fuelPrice && formInfo.avgFuelConsumption ? (
         <div>
-          <h2>Dystans: {travelData.distance}km</h2>
-          <h2>Czas: {travelData.time}godz</h2>
-          <h2>Zużycie Paliwa {totalFuelConsumption}l</h2>
-          <h2>Całkowity Koszt: {travelCost}zł</h2>
+          <TravelInfo>Dystans: {travelData.distance} km</TravelInfo>
+          <TravelInfo>Czas: {travelData.time} godz</TravelInfo>
+          <TravelInfo>Zużycie Paliwa: {totalFuelConsumption} l</TravelInfo>
+          <TravelInfo>Całkowity Koszt: {travelCost} zł</TravelInfo>
         </div>
       ) : (
-        <h2>Podaj cenę paliwa i śr spalanie</h2>
+        <TravelInfo>Podaj cenę paliwa i śr spalanie</TravelInfo>
       )}
     </div>
   );

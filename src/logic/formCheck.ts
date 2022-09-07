@@ -13,14 +13,15 @@ export const searchFormCheck = (adresses: IAdressFormat) => {
     adress1Exist: adress1.length > 0,
     adress2Exist: adress2.length > 0,
     adressesDiffer: adress1 !== adress2,
+
     allTestsPass: function () {
-      console.log(
-        (this.adress1Exist === this.adress2Exist) === this.adressesDiffer
-      );
+      // console.log(
+      //   (this.adress1Exist === this.adress2Exist) === this.adressesDiffer
+      // );
       return (this.adress1Exist === this.adress2Exist) === this.adressesDiffer;
     },
   };
-  console.log(tests);
+  // console.log(tests);
   //   console.log(adress2);
   return tests;
 };

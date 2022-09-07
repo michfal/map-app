@@ -3,8 +3,9 @@ import { MapContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '../../logic/capitalize';
 import { searchFormCheck } from '../../logic/formCheck';
+import { Form, FormInput, FormLabel, FormButton } from './formStyles.style';
 
-export const SearchForm: React.FC<IProps> = ({ intro }) => {
+export const SearchForm: React.FC<IProps> = (props) => {
   const { handleLocationSearch, currentAdresses, setCurrentAdresses } =
     useContext(MapContext);
 
@@ -12,12 +13,12 @@ export const SearchForm: React.FC<IProps> = ({ intro }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // console.log(typeof intro);
+    console.log(e.target);
     const allFormCheckPass = searchFormCheck(currentAdresses).allTestsPass();
-    console.log(allFormCheckPass);
+    // console.log(allFormCheckPass);
     if (searchFormCheck(currentAdresses).allTestsPass()) {
       handleLocationSearch();
-      intro && navigate('/map');
+      props.intro && navigate('/map');
     }
   };
 
@@ -31,20 +32,18 @@ export const SearchForm: React.FC<IProps> = ({ intro }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <Form onSubmit={handleSubmit} map={props.map}>
+      <FormLabel map={props.map}>
         Adress1:
-        <input type='text' name='adress1' onChange={handleInput} />
-      </label>
+        <FormInput type='text' name='adress1' onChange={handleInput} />
+      </FormLabel>
 
-      <label>
-        <label>
-          Adress2:
-          <input type='text' name='adress2' onChange={handleInput} />
-        </label>
-      </label>
+      <FormLabel map={props.map}>
+        Adress2:
+        <FormInput type='text' name='adress2' onChange={handleInput} />
+      </FormLabel>
 
-      <input type='submit' value='Znajdź' />
-    </form>
+      <FormButton type='submit' value='Znajdź' />
+    </Form>
   );
 };

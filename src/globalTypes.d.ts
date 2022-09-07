@@ -1,6 +1,6 @@
 export {};
 
-declare module '*.scss';
+import type {} from 'styled-components/cssprop';
 
 declare global {
   interface IAdressFormat {
@@ -12,6 +12,9 @@ declare global {
 
   interface IProps {
     intro?: string;
+    map?: boolean;
   }
-  module '*.scss';
+  interface IHeader {
+    primary?: boolean;
+  }
 }
