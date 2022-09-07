@@ -1,8 +1,8 @@
 # Getting Started with Create React App
 App to calculate travel costs.
 
-Built with:
-Create react App
-Here API
-React Leaflet
-Styled-components
+Built with: <br/>
+-Create React App <br/>
+-Here API <br/>
+-React Leaflet <br/>
+-Styled Components <br/>
