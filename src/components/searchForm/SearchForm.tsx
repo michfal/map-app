@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext } from 'react';
 import { MapContext } from '../../context/context';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '../../logic/capitalize';
@@ -13,9 +13,6 @@ export const SearchForm: React.FC<IProps> = (props) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(e.target);
-    const allFormCheckPass = searchFormCheck(currentAdresses).allTestsPass();
-    // console.log(allFormCheckPass);
     if (searchFormCheck(currentAdresses).allTestsPass()) {
       handleLocationSearch();
       props.intro && navigate('/map');
