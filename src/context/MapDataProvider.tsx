@@ -25,12 +25,7 @@ export const MapDataProvider = ({ children }: { children: ReactNode }) => {
     useState<IAdressFormat>(baseAdresses);
 
   //search history
-
   const [searchHistory, setSearchHistory] = useState<Array<IAdressFormat>>([]);
-
-  // useEffect(() => {
-  //   console.log(searchHistory);
-  // }, [searchHistory]);
 
   const handleSearchHistory = async (adress: IAdressFormat) => {
     if (typeof searchHistory[0] == 'object') {
@@ -52,7 +47,7 @@ export const MapDataProvider = ({ children }: { children: ReactNode }) => {
   const handleLocationSearch = () => {
     getLocationsData(currentAdresses.adress1, currentAdresses.adress2).then(
       (data: any) => {
-        console.log(data);
+        // console.log(data);
         setCurrentAdresses(data);
         handleSearchHistory(data);
       }

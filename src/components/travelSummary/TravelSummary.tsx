@@ -21,6 +21,9 @@ export const TravelSummary: React.FC = () => {
     avgFuelConsumption: 0,
   });
 
+  useEffect(() => {
+    console.log(travelData);
+  });
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     setFormInfo({
