@@ -21,7 +21,7 @@ export const Map: React.FC = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
           />
-          {routingDataExist && <Routing />}
+          <Routing />
         </MapContainer>
       ) : (
         <div className='leaflet-container leaflet-fade-anim'></div>
